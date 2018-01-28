@@ -23,7 +23,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
   }
 
   @ExceptionHandler(PriceNotFoundException.class)
-  public final ResponseEntity<ErrorDetails> handleUserNotFoundException(PriceNotFoundException ex, WebRequest request) {
+  public final ResponseEntity<ErrorDetails> handlezNotFoundException(PriceNotFoundException ex, WebRequest request) {
     ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(),
         request.getDescription(false));
     return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);

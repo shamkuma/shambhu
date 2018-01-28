@@ -1,9 +1,13 @@
 package com.controllers;
 
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
@@ -17,13 +21,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import java.io.FileInputStream;
 
+import com.exception.PriceNotFoundException;
 import com.model.Response;
 import com.model.Trade;
-import java.io.InputStream;
-import java.util.Properties;
-import java.io.IOException;
 
 
 @RestController
@@ -55,6 +56,9 @@ public class TradeController {
 					tradeDB.put(t.getSymbol(), t1);
 					response.setStatus(true);
 					response.setMessage(prop.getProperty("success_msg2"));
+				}else {
+					response.setStatus(false);
+					response.setMessage(prop.getProperty("error_msg1"));
 				}
 			} else {
 				insertInDB(t.getSymbol(), t.getSource(), t.getPrice());
@@ -80,6 +84,7 @@ public class TradeController {
 			insertInDB(t.getSymbol(), t.getSource(), t.getPrice());
 			response.setStatus(true);
 			response.setMessage(prop.getProperty("success_msg1"));
+			return response;
 		} else {
 			// check this source present for this symbol
 			if (checkSourcePresence(existingList, t.getSource())) {
@@ -90,16 +95,22 @@ public class TradeController {
 					tradeDB.put(t.getSymbol(), t1);
 					response.setStatus(true);
 					response.setMessage(prop.getProperty("success_msg2"));
+					return response; 
+				}else {
+					response.setStatus(false);
+					response.setMessage(prop.getProperty("error_msg1"));
+					return response;
 				}
 			} else {
 				insertInDB(t.getSymbol(), t.getSource(), t.getPrice());
 				response.setStatus(true);
-				response.setMessage(prop.getProperty("success_msg3"));
+				response.setMessage(prop.getProperty("success_msg2"));
+				return response;
 			}
 
 		}
 
-		return response;
+		//return response;
 	}
 
 
@@ -109,9 +120,10 @@ public class TradeController {
 		String msg = null;
 		List<Trade> existingList = tradeDB.get(symbol);
 		if (existingList == null || existingList.isEmpty()) {
-
-			msg =prop.getProperty("error_msg")+ symbol;
-			return msg;
+			msg =prop.getProperty("error_msg2")+ symbol;
+		  throw new PriceNotFoundException(msg);
+			
+			//return msg;
 		}
 
 		existingList.sort((Trade t1, Trade t2) -> t1.getPrice().compareTo(t2.getPrice()));
