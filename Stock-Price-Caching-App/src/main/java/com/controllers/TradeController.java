@@ -46,6 +46,7 @@ public class TradeController {
 			insertInDB(t.getSymbol(), t.getSource(), t.getPrice());
 			response.setStatus(true);
 			response.setMessage(prop.getProperty("success_msg1"));
+			return response;
 		} else {
 			// check this source present for this symbol
 			if (checkSourcePresence(existingList, t.getSource())) {
@@ -56,19 +57,23 @@ public class TradeController {
 					tradeDB.put(t.getSymbol(), t1);
 					response.setStatus(true);
 					response.setMessage(prop.getProperty("success_msg2"));
+					return response;
+					
 				}else {
 					response.setStatus(false);
 					response.setMessage(prop.getProperty("error_msg1"));
+					return response;
 				}
 			} else {
 				insertInDB(t.getSymbol(), t.getSource(), t.getPrice());
 				response.setStatus(true);
 				response.setMessage(prop.getProperty("success_msg3"));
+				return response;
 			}
 
 		}
 
-		return response;
+		
 	}
 
 	@RequestMapping(value="/consumePrice",method = RequestMethod.GET) 
