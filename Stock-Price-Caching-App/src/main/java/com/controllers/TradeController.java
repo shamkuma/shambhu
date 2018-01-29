@@ -40,6 +40,8 @@ public class TradeController {
 	@Produces(MediaType.APPLICATION_XML)
 	public @ResponseBody Response consumePrice(@RequestBody Trade t) {
 		
+		
+		
 		List<Trade> existingList = tradeDB.get(t.getSymbol());
 		Response response = new Response();
 		if (existingList == null || existingList.isEmpty()) {
@@ -57,8 +59,7 @@ public class TradeController {
 					tradeDB.put(t.getSymbol(), t1);
 					response.setStatus(true);
 					response.setMessage(prop.getProperty("success_msg2"));
-					return response;
-					
+					return response; 
 				}else {
 					response.setStatus(false);
 					response.setMessage(prop.getProperty("error_msg1"));
@@ -67,12 +68,11 @@ public class TradeController {
 			} else {
 				insertInDB(t.getSymbol(), t.getSource(), t.getPrice());
 				response.setStatus(true);
-				response.setMessage(prop.getProperty("success_msg3"));
+				response.setMessage(prop.getProperty("success_msg2"));
 				return response;
 			}
 
 		}
-
 		
 	}
 
