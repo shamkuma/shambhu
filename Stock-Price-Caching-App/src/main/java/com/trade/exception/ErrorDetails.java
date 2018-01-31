@@ -1,4 +1,4 @@
-package com.exception;
+package com.trade.exception;
 import java.util.Date;
 
 public class ErrorDetails {

@@ -1,4 +1,4 @@
-package com.model;
+package com.trade.model;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement

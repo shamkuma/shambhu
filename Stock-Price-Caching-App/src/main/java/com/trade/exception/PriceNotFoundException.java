@@ -1,4 +1,4 @@
-package com.exception;
+package com.trade.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 

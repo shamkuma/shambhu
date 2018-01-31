@@ -1,4 +1,4 @@
-package com.model;
+package com.trade.model;
 
 
 import java.io.Serializable;
@@ -16,6 +16,14 @@ public class Trade implements Serializable{
 	private String source;
 	private Double price;
 
+	public Trade() {
+		
+	}
+	public Trade(String symbol,String source, Double price) {
+		this.symbol=symbol;
+		this.source=source;
+		this.price=price;
+	}
 	public String getSymbol() {
 		return symbol;
 	}

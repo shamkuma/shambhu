@@ -51,24 +51,8 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-  <groupId>org.hibernate</groupId>
-  <artifactId>hibernate-validator-annotation-processor</artifactId>
-  <version>4.1.0.Final</version>
-  
-</dependency>
 
-		<dependency>
-    <groupId>org.hibernate</groupId>
-    <artifactId>hibernate-core</artifactId>
-    <version>5.0.7.Final</version>
-</dependency>
 
-<dependency>
-    <groupId>org.hibernate</groupId>
-    <artifactId>hibernate-validator</artifactId>
-    <version>5.2.4.Final</version>
-</dependency>
 
 <!-- https://mvnrepository.com/artifact/com.sun.jersey/jersey-server -->
 <dependency>
@@ -76,6 +60,7 @@
     <artifactId>jersey-server</artifactId>
     <version>1.2</version>
 </dependency>
+
 
 	</dependencies>
 
