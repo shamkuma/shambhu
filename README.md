@@ -19,17 +19,18 @@ Step1: Download or clone project from git hub
 
 Step2:Import Stock-Price-Caching-App into STS as "Existing Maven Project"
 
-Step3: Do maven clean install using below 
-         Right Click on Project "Stock-Price-Caching-App" -> Run as -> Maven Install
+Step3: Do maven dependency update 
+         Right Click on Project "Stock-Price-Caching-App" -> Maven -> Update Project
 
 Step 4: Run as Spring Boot Application by Right Click on Project or Run as Java Application.
 
 Running Junit
 -------------	 
 
-Running Junit have only one dependency that your server should be up otherwise Junit will fail else all testcase should execute successfully
+All testcase should execute successfully
 
 Testing Using Browser
+--------------------
 Scenario One: When Junit has not been executed means no data exist on server
    Case1:
        Step 1: http://localhost:8080/getPrice/TCS
