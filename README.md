@@ -38,18 +38,18 @@ Scenario One: When Junit has not been executed means no data exist on server
 
 
 Case2: Provide data by browser 
-     	Step1: http://localhost:8080/consumePrice?source=NSE&symbol=TCS&price=200
+     	Step1: http://localhost:8080/consumePrice?symbol=TCS&source=NSE&price=200
 		        OutPut:Symbol/Source Price added successfully true
 		Step 2: http://localhost:8080/getPrice/TCS
 		       Output:Price for Symbol TCS is: 200.0
 			   
 Case3: When Price Diffrence more than .1%
-         Step1:	http://localhost:8080/consumePrice?source=NSE&symbol=TCS&price=400
+         Step1:	http://localhost:8080/consumePrice?source=symbol=TCS&NSE&price=400
           Output:Symbol price updated(Price diffrence more than .1%)true
 		  Step2: http://localhost:8080/getPrice/TCS
 		  Output:Price for Symbol TCS is: 400.0
 Case4: When Price Diffrence is less than .1%
-       Step1: http://localhost:8080/consumePrice?source=NSE&symbol=TCS&price=400.001
+       Step1: http://localhost:8080/consumePrice?source=symbol=TCS&NSE&price=400.001
 		OutPut: Price Not Updated(Price diffrence less than .1%)false
 		Step2: http://localhost:8080/getPrice/TCS
 		  Output:Price for Symbol TCS is: 400.0
