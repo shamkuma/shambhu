@@ -74,8 +74,8 @@ public class TradeController {
 
 	@RequestMapping(value = "/consumePrice", method = RequestMethod.GET)
 	@Produces(MediaType.APPLICATION_XML)
-	public @ResponseBody Response consumePrice(@RequestParam("symbol") String source,
-			@RequestParam("source") String symbol, @RequestParam("price") double price) {
+	public @ResponseBody Response consumePrice(@RequestParam("symbol") String symbol,
+			@RequestParam("source") String source, @RequestParam("price") double price) {
 		Trade trade=new Trade(symbol,source,price);
 		logger.info("Entering into TradeController.consumePrice-Get Version Method");
 		Response response = new Response();

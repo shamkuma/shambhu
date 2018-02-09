@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.trade.controllers.TradeController;
 import com.trade.model.Trade;
 import com.trade.service.TradeService;
 import com.trade.service.TradeServiceImpl;
@@ -84,6 +85,11 @@ public class StockPriceCachingAppApplicationTests {
   public void test6_getPriceForSourceTest() {
 	  Trade trade= new Trade("TCS","NSE",500.0);
 	  assertEquals(500.0,tradeService.getPriceForSource(trade),0.001);
+  }
+  @Test
+  public void test7_getPriceTradeControllerTest() {
+	  TradeController tradeC=new TradeController();
+	  System.out.println(tradeC.getPrice("TCS"));
   }
 	
 	
